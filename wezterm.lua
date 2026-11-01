@@ -36,12 +36,31 @@ config.use_fancy_tab_bar = false
 -- 	brightness = 1.0,
 -- }
 
--- actually apply your config choices
+-- color schemes (Ctrl+Alt+N)
+-- https://wezterm.org/colorschemes
+local schemes = {
+	"nord",(46, 52, 64, 0.7)
+	"catppuccin-mocha",
+	"Everforest Dark (Gogh)",
+	"Gruvbox Dark",
+}
+
+-- base scheme terminal
+config.color_scheme = "Gruvbox Dark"
+bold_brightens_ansi_colors = false
+
+config.colors = {
+	foreground = "#ECEFF4", -- text color
+	cursor_bg = "#ffffff", -- cursor block color
+	cursor_fg = "#202621", -- color of the character under the cursor
+	cursor_border = "#ffffff", -- cursor outline (matters for bar/underline styles)
+}
+
 -- keymaps
 config.keys = {
 	{
 		key = "h",
-		mods = "CTRL|SHIFT|ALT",
+		mods = "CTRL|SHIFT",
 		action = wezterm.action.SplitPane({
 			direction = "Right",
 			size = { Percent = 50 },
@@ -49,36 +68,37 @@ config.keys = {
 	},
 	{
 		key = "v",
-		mods = "CTRL|SHIFT|ALT",
+		mods = "CTRL|SHIFT",
 		action = wezterm.action.SplitPane({
 			direction = "Down",
 			size = { Percent = 50 },
 		}),
 	},
 	{
-		key = "U",
-		mods = "CTRL|SHIFT",
+		key = "z",
+		mods = "ALT",
 		action = act.AdjustPaneSize({ "Left", 5 }),
 	},
 	{
-		key = "I",
-		mods = "CTRL|SHIFT",
+		key = "x",
+		mods = "ALT",
 		action = act.AdjustPaneSize({ "Down", 5 }),
 	},
 	{
-		key = "O",
-		mods = "CTRL|SHIFT",
+		key = "c",
+		mods = "ALT",
 		action = act.AdjustPaneSize({ "Up", 5 }),
 	},
 	{
-		key = "P",
-		mods = "CTRL|SHIFT",
+		key = "v",
+		mods = "ALT",
 		action = act.AdjustPaneSize({ "Right", 5 }),
 	},
-	{ key = "9", mods = "CTRL", action = act.PaneSelect },
-	{ key = "L", mods = "CTRL", action = act.ShowDebugOverlay },
+	{ key = "l", mods = "ALT", action = act.PaneSelect },
+	{ key = "d", mods = "ALT", action = act.CloseCurrentPane({ confirm = false }) },
+	{ key = "0", mods = "CTRL", action = act.ShowDebugOverlay },
 	{
-		key = "O",
+		key = "o",
 		mods = "CTRL|ALT",
 		-- toggling opacity
 		action = wezterm.action_callback(function(window, _)
@@ -91,34 +111,23 @@ config.keys = {
 			window:set_config_overrides(overrides)
 		end),
 	},
-}
-
--- For example, changing the color scheme:
-config.color_scheme = "Gruvbox Dark"
-config.colors = {
-	cursor_bg = "#ffffff", -- cursor block color
-	cursor_fg = "#000000", -- color of the character under the cursor
-	cursor_border = "#ffffff", -- cursor outline (matters for bar/underline styles)
-
-	ansi = {
-		"#000000", -- black
-		"#f87575", -- red
-		"#a6ffa6", -- green
-		"#ffffff", -- yellow: change this value
-		"#6f64ff", -- blue
-		"#fd74fd", -- magenta
-		"#8ae4ff", -- cyan
-		"#ffffff", -- white
-	},
-	brights = {
-		"#555555",
-		"#ff5555",
-		"#f8faf8",
-		"#ffffff",
-		"#5555ff",
-		"#ff55ff",
-		"#ffffff",
-		"#ffffff",
+	{
+		key = "n",
+		mods = "CTRL|ALT",
+		-- cycle through color schemes
+		action = wezterm.action_callback(function(window, _)
+			local overrides = window:get_config_overrides() or {}
+			local current = overrides.color_scheme or window:effective_config().color_scheme
+			local idx = 0
+			for i, name in ipairs(schemes) do
+				if name == current then
+					idx = i
+					break
+				end
+			end
+			overrides.color_scheme = schemes[idx % #schemes + 1]
+			window:set_config_overrides(overrides)
+		end),
 	},
 }
 
