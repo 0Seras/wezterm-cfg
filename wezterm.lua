@@ -39,7 +39,7 @@ config.use_fancy_tab_bar = false
 -- color schemes (Ctrl+Alt+N)
 -- https://wezterm.org/colorschemes
 local schemes = {
-	"nord",(46, 52, 64, 0.7)
+	"nord",
 	"catppuccin-mocha",
 	"Everforest Dark (Gogh)",
 	"Gruvbox Dark",
