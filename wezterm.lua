@@ -146,7 +146,7 @@ config.window_frame = {
 config.window_decorations = "NONE | RESIZE"
 config.default_prog = { "powershell.exe", "-NoLogo" }
 config.initial_cols = 80
--- config.window_background_image = "C:/Users/DELL/.config/Wallpapers/16.png"
+-- config.window_background_image = "C:/Users/Iwakura/.config/Wallpapers/16.png / change to your term background to img if u want"
 -- config.window_background_image_hsb = {
 -- brightness = 0.1,
 -- }
