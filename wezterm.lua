@@ -14,10 +14,14 @@ config.cursor_blink_rate = 500
 config.term = "xterm-256color" -- Set the terminal type
 
 config.font = wezterm.font("JetBrains Mono")
+-- config.font = wezterm.font("JetBrains Mono")
+-- config.font = wezterm.font("Monocraft Nerd Font")
+-- config.font = wezterm.font("Iosevka")
+-- config.font = wezterm.font("Iosevka Custom")
 config.cell_width = 1
 config.window_background_opacity = 0.8
 config.prefer_egl = true
-config.font_size = 11
+config.font_size = 10
 
 config.window_padding = {
 	left = 0,
@@ -46,14 +50,15 @@ local schemes = {
 }
 
 -- base scheme terminal
-config.color_scheme = "Gruvbox Dark"
+config.color_scheme = "nord"
 bold_brightens_ansi_colors = false
 
 config.colors = {
 	foreground = "#ECEFF4", -- text color
+	background = "rgb(0, 0, 0, 0.9)", -- background color del if u want to use base color scheme background
 	cursor_bg = "#ffffff", -- cursor block color
-	cursor_fg = "#202621", -- color of the character under the cursor
-	cursor_border = "#ffffff", -- cursor outline (matters for bar/underline styles)
+	cursor_fg = "#a1a1a1", -- color of the character under the cursor
+	cursor_border = "#a1a1a1", -- cursor outline (matters for bar/underline styles)
 }
 
 -- keymaps
@@ -141,4 +146,19 @@ config.window_frame = {
 config.window_decorations = "NONE | RESIZE"
 config.default_prog = { "powershell.exe", "-NoLogo" }
 config.initial_cols = 80
+-- config.window_background_image = "C:/Users/DELL/.config/Wallpapers/16.png"
+-- config.window_background_image_hsb = {
+-- brightness = 0.1,
+-- }
+
+-- wezterm.on("gui-startup", function(cmd)
+-- 	local args = {}
+-- 	if cmd then
+-- 		args = cmd.args
+-- 	end
+--
+-- 	local tab, pane, window = mux.spawn_window(cmd or {})
+-- 	-- window:gui_window():maximize()
+-- 	-- window:gui_window():set_position(0, 0)
+-- end)
 return config
