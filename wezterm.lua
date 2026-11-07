@@ -155,7 +155,7 @@ config.window_frame = {
 config.window_decorations = "NONE | RESIZE"
 config.default_prog = { "powershell.exe", "-NoLogo" }
 config.initial_cols = 80
--- config.window_background_image = "C:/Users/DELL/.config/Wallpapers/16.png"
+-- config.window_background_image = "C:/Users/0Seras/GoonPic/16.png"
 -- config.window_background_image_hsb = {
 -- brightness = 0.1,
 -- }
