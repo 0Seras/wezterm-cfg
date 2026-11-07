@@ -51,14 +51,23 @@ local schemes = {
 
 -- base scheme terminal
 config.color_scheme = "nord"
-bold_brightens_ansi_colors = false
+config.bold_brightens_ansi_colors = false
 
 config.colors = {
 	foreground = "#ECEFF4", -- text color
-	background = "rgb(0, 0, 0, 0.9)", -- background color del if u want to use base color scheme background
+	background = "rgb(0, 0, 0, 0.8)", -- background color
 	cursor_bg = "#ffffff", -- cursor block color
 	cursor_fg = "#a1a1a1", -- color of the character under the cursor
 	cursor_border = "#a1a1a1", -- cursor outline (matters for bar/underline styles)
+}
+
+-- mouse: Alt + left mouse to drag terminal)
+config.mouse_bindings = {
+	{
+		event = { Drag = { streak = 1, button = "Left" } },
+		mods = "ALT",
+		action = act.StartWindowDrag,
+	},
 }
 
 -- keymaps
@@ -146,7 +155,7 @@ config.window_frame = {
 config.window_decorations = "NONE | RESIZE"
 config.default_prog = { "powershell.exe", "-NoLogo" }
 config.initial_cols = 80
--- config.window_background_image = "C:/Users/0Seras/.config/Wallpapers/16.png / change to your term background to img if u want"
+-- config.window_background_image = "C:/Users/DELL/.config/Wallpapers/16.png"
 -- config.window_background_image_hsb = {
 -- brightness = 0.1,
 -- }
