@@ -44,9 +44,11 @@ config.use_fancy_tab_bar = false
 -- https://wezterm.org/colorschemes
 local schemes = {
 	"nord",
-	"catppuccin-mocha",
+	"catppuccin-latte",
 	"Everforest Dark (Gogh)",
-	"Gruvbox Dark",
+	"Tokyo Night",
+	"Gruvbox dark, pale (base16)",
+	"Kanagawa (Gogh)",
 }
 
 -- base scheme terminal
@@ -155,7 +157,7 @@ config.window_frame = {
 config.window_decorations = "NONE | RESIZE"
 config.default_prog = { "powershell.exe", "-NoLogo" }
 config.initial_cols = 80
--- config.window_background_image = "C:/Users/0Seras/GoonPic/16.png"
+-- config.window_background_image = "C:/Users/DELL/.config/Wallpapers/16.png"
 -- config.window_background_image_hsb = {
 -- brightness = 0.1,
 -- }
